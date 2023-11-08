@@ -55,11 +55,11 @@ if CYTHON:
 requirements = []
 
 setup(name="pbc_mindist",
-      version='1.0.0',
+      version='1.0.1',
       description=__doc__,
-      url="https://github.com/joaorodrigues/pbc_mindist",
-      author='Joao Rodrigues',
-      author_email='j.p.g.l.m.rodrigues@gmail.com',
+      url="https://github.com/CongWang98/pbc_mindist",
+      author='Created by Joao Rodrigues, Modified by Cong Wang',
+      author_email='j.p.g.l.m.rodrigues@gmail.com, congwang@mit.edu',
       packages=packages,
       cmdclass=cmdclass,
       ext_modules=ext_modules,
