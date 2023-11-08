@@ -64,6 +64,8 @@ def parse_args():
 
     ap.add_argument('-v', '--verbose', action='store_true',
                     help='Outputs diagnostic log messages')
+    
+    ap.add_argument('-o', '--output', type=str, default='mindist.npy')   
 
     sel = ap.add_mutually_exclusive_group()
     sel.add_argument('--alpha', action='store_const', dest='atomsel',
@@ -165,13 +167,17 @@ def main():
                                t.unitcell_vectors.astype('float64'))
 
     # Get smallest distance index
+    min_dist = np.sqrt(min_dist)
     f = np.argmin(min_dist)
     # Return info on minimum distance (and sqrt it)
-    d = np.sqrt(min_dist[f])
+    d = min_dist[f]
     i, j = info[f]
 
     logging.info((f'Minimum distance between periodic images is {d:6.3f} nm'
                   f' between atoms {i} and {j} at frame {f}'))
+    
+    # Save output
+    np.save(args.output, min_dist)
 
 
 if __name__ == '__main__':
